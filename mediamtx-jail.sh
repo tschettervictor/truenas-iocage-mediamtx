@@ -138,6 +138,7 @@ if [ -z "${POOL_PATH}/mediamtx" ]; then
     iocage exec "${JAIL_NAME}" cp /mediamtx/mediamtx.yml /usr/local/etc/mediamtx/
 fi
 iocage exec "${JAIL_NAME}" cp /mnt/includes/mediamtx /usr/local/etc/rc.d/
+iocage exec "${JAIL_NAME}" chown -R www:www /usr/local/etc/mediamtx
 iocage exec "${JAIL_NAME}" sysrc mediamtx_enable="YES"
 iocage exec "${JAIL_NAME}" sysrc mediamtx_config="/usr/local/etc/mediamtx/mediamtx.yml"
 
