@@ -134,7 +134,7 @@ then
 fi
 iocage exec "${JAIL_NAME}" cp /mediamtx/mediamtx /usr/local/bin/mediamtx
 iocage exec "${JAIL_NAME}" chmod +x /usr/local/bin/mediamtx
-if [ $(ls -A "${POOL_PATH}"/mediamtx) ]; then
+if ! [ "$(ls -A "${POOL_PATH}/mediamtx")" ]; then
     iocage exec "${JAIL_NAME}" cp /mediamtx/mediamtx.yml /usr/local/etc/mediamtx/
 fi
 iocage exec "${JAIL_NAME}" cp /mnt/includes/mediamtx /usr/local/etc/rc.d/
