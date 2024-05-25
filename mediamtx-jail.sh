@@ -111,7 +111,6 @@ rm /tmp/pkg.json
 iocage exec "${JAIL_NAME}" mkdir -p /mnt/includes/
 mkdir -p "${POOL_PATH}"/mediamtx
 iocage exec "${JAIL_NAME}" mkdir -p /usr/local/etc/mediamtx
-iocage exec "${JAIL_NAME}" mkdir -p /var/log/mediamtx
 iocage exec "${JAIL_NAME}" mkdir -p /usr/local/etc/rc.d/
 iocage fstab -a "${JAIL_NAME}" "${INCLUDES_PATH}" /mnt/includes nullfs rw 0 0
 iocage fstab -a "${JAIL_NAME}" "${POOL_PATH}"/mediamtx /usr/local/etc/mediamtx nullfs rw 0 0
