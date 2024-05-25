@@ -88,7 +88,7 @@ cat <<__EOF__ >/tmp/pkg.json
 {
   "pkgs": [
   "git-lite",
-  "go121"
+  "go122"
   ]
 }
 __EOF__
@@ -122,21 +122,21 @@ iocage fstab -a "${JAIL_NAME}" "${POOL_PATH}"/mediamtx /usr/local/etc/mediamtx n
 #####
 
 iocage exec "${JAIL_NAME}" git clone https://github.com/bluenviron/mediamtx
-if ! iocage exec "${JAIL_NAME}" "cd mediamtx && go121 generate ./..."
+if ! iocage exec "${JAIL_NAME}" "cd /mediamtx && go122 generate ./..."
 then
     echo "Failed to generate"
     exit 1
 fi
-if ! iocage exec "${JAIL_NAME}" "cd mediamtx && go121 build ."
+if ! iocage exec "${JAIL_NAME}" "cd /mediamtx && go122 build ."
 then
     echo "Failed to build"
     exit 1
 fi
-iocage exec "${JAIL_NAME}" cp mediamtx/mediamtx /usr/local/bin/mediamtx
+iocage exec "${JAIL_NAME}" cp /mediamtx/mediamtx /usr/local/bin/mediamtx
 iocage exec "${JAIL_NAME}" chmod +x /usr/local/bin/mediamtx
 if [ -z "${POOL_PATH}/mediamtx" ];
 then
-    iocage exec "${JAIL_NAME}" cp mediamtx/mediamtx.yml /usr/local/etc/mediamtx/
+    iocage exec "${JAIL_NAME}" cp /mediamtx/mediamtx.yml /usr/local/etc/mediamtx/
 fi
 iocage exec "${JAIL_NAME}" cp /mnt/includes/mediamtx /usr/local/etc/rc.d/
 iocage exec "${JAIL_NAME}" sysrc mediamtx_enable="YES"
