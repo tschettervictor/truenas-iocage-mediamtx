@@ -13,7 +13,7 @@ user=www
 rcvar=mediamtx_enable
 
 : ${mediamtx_enable:="NO"}
-: ${mediamtx_config:="/usr/local/etc/mediamtx/mediamtx.yml"}
+: ${mediamtx_config:="/usr/local/www/mediamtx/mediamtx.yml"}
 
 pidfile=/var/run/${name}.pid
 command=/usr/sbin/daemon
